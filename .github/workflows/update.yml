@@ -1,0 +1,31 @@
+# Keeps Formula/helmsman.rb in step with the latest release of rsmrtk/helmsman, so `brew upgrade helmsman` works for
+# every new tag without a manual edit. Uses only this repository's own GITHUB_TOKEN (the release assets are public),
+# so no personal token has to be stored anywhere.
+name: update-formula
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: regenerate the formula from the latest release
+        id: gen
+        run: |
+          out=$(python3 scripts/update_formula.py)
+          echo "$out"
+          echo "msg=$out" >> "$GITHUB_OUTPUT"
+      - name: commit if it changed
+        run: |
+          git diff --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "helmsman: ${{ steps.gen.outputs.msg }}"
+          git push
