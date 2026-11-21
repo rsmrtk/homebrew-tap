@@ -2,28 +2,28 @@
 class Helmsman < Formula
   desc "Terminal UI for Kubernetes that shows what is wrong at a glance"
   homepage "https://github.com/rsmrtk/helmsman"
-  version "1.0.3"
+  version "1.0.4"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
       url "https://github.com/rsmrtk/helmsman/releases/download/v#{version}/helmsman_Darwin_arm64.tar.gz"
-      sha256 "6c90cefe5e255e646080bdec14afeec97d45d6072dd1bd8fc0b755edc6e13aed"
+      sha256 "4a917472e895de24f0e91bc8433d48f96f434afa3d680d2fb5ec85b1a0694d6b"
     end
     on_intel do
       url "https://github.com/rsmrtk/helmsman/releases/download/v#{version}/helmsman_Darwin_amd64.tar.gz"
-      sha256 "8754e9aa7fcff2785f5b070dd5ca22df02ad4e73f503ce8c504ba05895dffc02"
+      sha256 "bfe6274789728b45ba53a0b33612f94b7527125d1f3adf9e9bff430220ebee70"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/rsmrtk/helmsman/releases/download/v#{version}/helmsman_Linux_arm64.tar.gz"
-      sha256 "adc1be4362d619d6310cd19264772445fc60f1cfd20c9a1402b2ebdb4b567b71"
+      sha256 "1af5a296aaca9c1ff4b3b406f21169413dfa5dcffc43191cc64a01ca74f5d393"
     end
     on_intel do
       url "https://github.com/rsmrtk/helmsman/releases/download/v#{version}/helmsman_Linux_amd64.tar.gz"
-      sha256 "6c6012d3f26534208b477f57956eb9b83e923623133748aeaede304bdc11f0ec"
+      sha256 "78bd5cf7edd08978f05e0f2f849b972adafbc0fb9ab2e801133413f620ffa971"
     end
   end
 
